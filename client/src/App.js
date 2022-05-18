@@ -3,7 +3,7 @@ import axios from 'axios';
 function App() {
   const [data, setData] = useState();
 
-  const url = 'https://en.wikipedia.org/wiki/app';
+  const url = 'https://joelsaucedo.com/about.html';
 
   useEffect(() => {
     axios

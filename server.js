@@ -46,7 +46,26 @@ app.get('/test', function (req, res) {
     (async () => {
       url = e;
       const response = await axios.get(url);
-      var text = convert(response.data, {});
+      var text = convert([response.data], {
+        baseElements: { selectors: ['body'] },
+        formatters: {
+          // Create a formatter.
+          fooBlockFormatter: function (elem, walk, builder, formatOptions) {
+            builder.openBlock({
+              leadingLineBreaks: formatOptions.leadingLineBreaks || 1,
+            });
+            walk(elem.children, builder);
+            builder.addInline('!');
+            builder.closeBlock({
+              trailingLineBreaks: formatOptions.trailingLineBreaks || 1,
+            });
+          },
+        },
+        selectors: [
+          { selector: 'h1', options: { bold: true } },
+          { selector: 'table', options: { uppercaseHeaderCells: false } },
+        ],
+      });
 
       app.get('/express_backend', (req, res) => {
         res.send(text);
