@@ -9,6 +9,7 @@ var fs = require('fs');
 const { callbackify } = require('util');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+const puppeteer = require('puppeteer');
 
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
@@ -28,6 +29,19 @@ const test = 'https://joelsaucedo.com/about.html';
     dataTest.push({ text });
     res.send(text);
   });
+})();
+
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://joelsaucedo.com/about.html');
+  let element = await page.$('div');
+  let value = await page.evaluate((el) => el.textContent, element);
+  console.log(value);
+  let h1 = await page.$('h1');
+  let title = await page.evaluate((el) => el.textContent, h1);
+  console.log(title);
+  await browser.close();
 })();
 
 app.get('/test', function (req, res) {
