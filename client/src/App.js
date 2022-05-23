@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactDOM } from 'react';
 import axios from 'axios';
 function App() {
   const [data, setData] = useState();
@@ -44,7 +44,18 @@ function App() {
       });
   }, []);
 
-  console.log(data ? data.data[0].text : 'jdjj');
+  const text = (
+    <>
+      <h1>Hello world </h1>
+      <p>hello there</p>
+    </>
+  );
+
+  const test = text.props.children.map((t) => t);
+
+  const unwanted = test.filter((x) => x.type !== 'h1');
+
+  console.log(unwanted.map((x) => x.props.children));
 
   return <div>{data ? data.data[0].text : 'jdjj'}</div>;
 }

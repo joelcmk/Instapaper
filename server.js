@@ -37,10 +37,12 @@ const test = 'https://joelsaucedo.com/about.html';
   await page.goto('https://joelsaucedo.com/about.html');
   let element = await page.$('div');
   let value = await page.evaluate((el) => el.textContent, element);
-  console.log(value);
+  console.log('value');
   let h1 = await page.$('h1');
   let title = await page.evaluate((el) => el.textContent, h1);
   console.log(title);
+  const response = await page.goto(url);
+  console.log(await response.text());
   await browser.close();
 })();
 
