@@ -55,9 +55,22 @@ function App() {
 
   const unwanted = test.filter((x) => x.type !== 'h1');
 
-  console.log(unwanted.map((x) => x.props.children));
+  //console.log(unwanted.map((x) => x.props.children));
 
-  return <div>{data ? data.data[0].text : 'jdjj'}</div>;
+  const final = test.map((x) => x.props.children);
+
+  const pTest = final.map((x) => x);
+
+  console.log(pTest);
+
+  return (
+    <div>
+      {data ? data.data[0].text : 'jdjj'}
+      {final.map((x) => (
+        <h1>{x}</h1>
+      ))}
+    </div>
+  );
 }
 
 export default App;
