@@ -15,34 +15,24 @@ const puppeteer = require('puppeteer');
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 
 const dataTest = [];
-links = 'https://joelsaucedo.com/about.html';
+links = 'https://example.org/';
 
-const test = 'https://joelsaucedo.com/about.html';
+const test = 'https://example.org/';
 
 (async () => {
   url = test;
   const response = await axios.get(url);
   var text = convert(response.data, {});
-
-  app.post('/test', (req, res) => {
-    var name = req.body.url;
-    dataTest.push({ text });
-    res.send(text);
-  });
 })();
 
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto('https://joelsaucedo.com/about.html');
-  let element = await page.$('div');
-  let value = await page.evaluate((el) => el.textContent, element);
-  console.log('value');
-  let h1 = await page.$('h1');
-  let title = await page.evaluate((el) => el.textContent, h1);
-  console.log(title);
+  await page.goto('https://example.org/');
   const response = await page.goto(url);
-  console.log(await response.text());
+  //console.log(await response.text());
+  const test = await response.text();
+  dataTest.push({ test });
   await browser.close();
 })();
 

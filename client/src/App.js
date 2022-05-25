@@ -3,7 +3,7 @@ import axios from 'axios';
 function App() {
   const [data, setData] = useState();
 
-  const url = 'https://joelsaucedo.com/about.html';
+  const url = 'https://example.org/';
 
   useEffect(() => {
     axios
@@ -48,6 +48,8 @@ function App() {
     <>
       <h1>Hello world </h1>
       <p>hello there</p>
+      <h1>last one</h1>
+      <h3>dhdlslf</h3>
     </>
   );
 
@@ -61,14 +63,27 @@ function App() {
 
   const pTest = final.map((x) => x);
 
-  console.log(pTest);
+  //console.log(data ? data.data[0].test : 'dkdk');
+
+  const htmlPart = data ? data.data[0].test : 'dkdk';
+  const RenderHTML = <div dangerouslySetInnerHTML={{ __html: htmlPart }} />;
+
+  const htmlPart1 = htmlPart.replace(/<html>/g, '');
+  const htmlPart2 = htmlPart1.replace(/<\/html>/g, '');
+
+  console.log(htmlPart2.filter((bod) => bod.length > 6));
 
   return (
     <div>
-      {data ? data.data[0].text : 'jdjj'}
-      {final.map((x) => (
-        <h1>{x}</h1>
-      ))}
+      {test
+        ? test.map((x) => {
+            return x.type === 'h1' ? (
+              <h1>{x.props.children}</h1>
+            ) : (
+              <p>{x.props.children}</p>
+            );
+          })
+        : 'kdkd'}
     </div>
   );
 }
