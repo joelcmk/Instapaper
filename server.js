@@ -15,9 +15,9 @@ const puppeteer = require('puppeteer');
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 
 const dataTest = [];
-links = 'https://example.org/';
+links = 'https://en.wikipedia.org/wiki/Apple';
 
-const test = 'https://example.org/';
+const test = 'https://en.wikipedia.org/wiki/Apple';
 
 (async () => {
   url = test;
@@ -28,7 +28,7 @@ const test = 'https://example.org/';
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto('https://example.org/');
+  await page.goto('https://en.wikipedia.org/wiki/Apple');
   const response = await page.goto(url);
   //console.log(await response.text());
   const test = await response.text();

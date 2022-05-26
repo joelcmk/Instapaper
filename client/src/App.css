@@ -1,0 +1,33 @@
+body {
+  background: #000;
+  color: #fff;
+}
+
+#text {
+  color: red;
+  background-color: aqua;
+}
+
+.text {
+  color: aquamarine;
+}
+
+text {
+  color: aqua;
+}
+
+ul {
+}
+
+li {
+}
+nav {
+  display: none;
+}
+footer {
+  display: none;
+}
+
+aside {
+  display: none;
+}
