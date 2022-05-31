@@ -7,7 +7,8 @@ import * as sanitizeHtml from 'sanitize-html';
 function App() {
   const [data, setData] = useState();
 
-  const url = 'https://en.wikipedia.org/wiki/Apple';
+  const url =
+    'https://jeffknupp.com/blog/2014/05/30/you-need-to-start-a-whizbang-project-immediately//';
 
   useEffect(() => {
     axios
@@ -145,6 +146,8 @@ function App() {
       'figure',
       'hr',
       'li',
+      'form',
+      'noscript',
       'main',
       'ol',
       'p',

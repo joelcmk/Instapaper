@@ -31,3 +31,24 @@ footer {
 aside {
   display: none;
 }
+
+a {
+  color: white;
+}
+
+header {
+  display: none;
+}
+
+form {
+  display: none;
+}
+
+section {
+  display: none;
+}
+
+a[href="https://twitter.com/share"]
+{
+  display: none;
+}
