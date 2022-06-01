@@ -7,8 +7,7 @@ import * as sanitizeHtml from 'sanitize-html';
 function App() {
   const [data, setData] = useState();
 
-  const url =
-    'https://jeffknupp.com/blog/2014/05/30/you-need-to-start-a-whizbang-project-immediately//';
+  const url = 'https://fs.blog/learning/';
 
   useEffect(() => {
     axios

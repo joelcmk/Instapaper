@@ -39,6 +39,9 @@ a {
 header {
   display: none;
 }
+script {
+  display: none;
+}
 
 form {
   display: none;
@@ -48,7 +51,22 @@ section {
   display: none;
 }
 
-a[href="https://twitter.com/share"]
-{
+a[href*='javascript:window.print()'] {
   display: none;
+}
+
+a[href*='twitter'] {
+  display: none;
+}
+
+a[href*='facebook'] {
+  display: none;
+}
+
+a[href*='linkedin'] {
+  display: none;
+}
+
+li:nth-last-child(1) {
+  color: red;
 }
