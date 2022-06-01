@@ -67,6 +67,6 @@ a[href*='linkedin'] {
   display: none;
 }
 
-li:nth-last-child(1) {
-  color: red;
+div > ul:first-child {
+  display: none;
 }
