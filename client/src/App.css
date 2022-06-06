@@ -3,9 +3,8 @@ body {
   color: #fff;
 }
 
-#text {
-  color: red;
-  background-color: aqua;
+body::first-line {
+  color: blue;
 }
 
 .text {
