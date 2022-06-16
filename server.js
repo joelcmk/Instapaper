@@ -15,9 +15,9 @@ const puppeteer = require('puppeteer');
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 
 const dataTest = [];
-links = 'https://en.wikipedia.org/wiki/Apple';
+const links = ['url'];
 
-const test = 'https://en.wikipedia.org/wiki/Apple';
+const test = 'https://fs.blog/learning/';
 
 (async () => {
   url = test;
@@ -28,7 +28,7 @@ const test = 'https://en.wikipedia.org/wiki/Apple';
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto('https://en.wikipedia.org/wiki/Apple');
+  await page.goto('https://fs.blog/learning/');
   const response = await page.goto(url);
   //console.log(await response.text());
   const test = await response.text();
@@ -40,44 +40,18 @@ app.get('/test', function (req, res) {
   res.send(dataTest); //Line 10
 });
 
+app.get('/test2', function (req, res) {
+  res.send(links);
+});
+
 (async () => {
   app.post('/express_backend', function (req, res) {
     var name = req.body.url;
     res.send(name);
-    callbackify(name);
+    links.splice(0, 4, name);
   });
-
-  function callbackify(e) {
-    dkkd = e;
-    (async () => {
-      url = e;
-      const response = await axios.get(url);
-      var text = convert([response.data], {
-        baseElements: { selectors: ['body'] },
-        formatters: {
-          // Create a formatter.
-          fooBlockFormatter: function (elem, walk, builder, formatOptions) {
-            builder.openBlock({
-              leadingLineBreaks: formatOptions.leadingLineBreaks || 1,
-            });
-            walk(elem.children, builder);
-            builder.addInline('!');
-            builder.closeBlock({
-              trailingLineBreaks: formatOptions.trailingLineBreaks || 1,
-            });
-          },
-        },
-        selectors: [
-          { selector: 'h1', options: { bold: true } },
-          { selector: 'table', options: { uppercaseHeaderCells: false } },
-        ],
-      });
-
-      app.get('/express_backend', (req, res) => {
-        res.send(text);
-      });
-    })();
-  }
 })();
+
+console.log(links);
 
 // create a GET route
