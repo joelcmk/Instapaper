@@ -3,12 +3,7 @@ const express = require('express'); //Line 1
 const app = express(); //Line 2
 const port = process.env.PORT || 5000; //Line 3
 const { convert } = require('html-to-text');
-const data = require('./data');
-const bodyParser = require('body-parser');
 var fs = require('fs');
-const { callbackify } = require('util');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 const puppeteer = require('puppeteer');
 
 // This displays message that the server running and listening to specified port
@@ -39,19 +34,3 @@ const test = 'https://fs.blog/learning/';
 app.get('/test', function (req, res) {
   res.send(dataTest); //Line 10
 });
-
-app.get('/test2', function (req, res) {
-  res.send(links);
-});
-
-(async () => {
-  app.post('/express_backend', function (req, res) {
-    var name = req.body.url;
-    res.send(name);
-    links.splice(0, 4, name);
-  });
-})();
-
-console.log(links);
-
-// create a GET route
